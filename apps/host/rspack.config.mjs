@@ -1,6 +1,6 @@
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
-import ReactRefreshPlugin from "@rspack/plugin-react-refresh";
+import { ReactRefreshRspackPlugin } from "@rspack/plugin-react-refresh";
 
 const PORT = 3000;
 const isDev = process.env.NODE_ENV !== "production";
@@ -65,9 +65,14 @@ export default defineConfig({
       shared: {
         react: { singleton: true, requiredVersion: "^19.0.0" },
         "react-dom": { singleton: true, requiredVersion: "^19.0.0" },
+        // The automatic JSX transform imports these directly. They are separate
+        // entry points from "react", so sharing "react" alone does not cover
+        // them and each side would fall back to its own copy.
+        "react/jsx-runtime": { singleton: true, requiredVersion: "^19.0.0" },
+        "react/jsx-dev-runtime": { singleton: true, requiredVersion: "^19.0.0" },
       },
     }),
-    isDev && new ReactRefreshPlugin(),
+    isDev && new ReactRefreshRspackPlugin(),
   ].filter(Boolean),
   devServer: {
     port: PORT,

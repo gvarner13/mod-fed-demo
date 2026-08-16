@@ -19,6 +19,11 @@ export default defineConfig({
       shared: {
         react: { singleton: true, requiredVersion: "^19.0.0" },
         "react-dom": { singleton: true, requiredVersion: "^19.0.0" },
+        // The automatic JSX transform imports these directly. They are separate
+        // entry points from "react", so sharing "react" alone does not cover
+        // them and each side would fall back to its own copy.
+        "react/jsx-runtime": { singleton: true, requiredVersion: "^19.0.0" },
+        "react/jsx-dev-runtime": { singleton: true, requiredVersion: "^19.0.0" },
       },
     }),
   ],
