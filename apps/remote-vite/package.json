@@ -1,0 +1,25 @@
+{
+  "name": "@mod-fed/remote-vite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3002 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --port 3002 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo node_modules/.vite"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@module-federation/vite": "^1.20.7",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1"
+  }
+}
