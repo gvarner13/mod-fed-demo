@@ -13,6 +13,9 @@ export default defineConfig({
       // The Rspack host loads remotes as classic scripts, not ES modules,
       // so also emit a "var"-style container it can consume.
       varFilename: "varRemoteEntry.js",
+      // Attach the bundle's CSS to the exposed modules. Without this the host
+      // loads Cart's JS but none of its styles, so it renders unstyled.
+      bundleAllCSS: true,
       exposes: {
         "./Cart": "./src/Cart.tsx",
       },
