@@ -10,6 +10,9 @@ export default defineConfig({
     federation({
       name: "cart",
       filename: "remoteEntry.js",
+      // The Rspack host loads remotes as classic scripts, not ES modules,
+      // so also emit a "var"-style container it can consume.
+      varFilename: "varRemoteEntry.js",
       exposes: {
         "./Cart": "./src/Cart.tsx",
       },
@@ -22,6 +25,8 @@ export default defineConfig({
   server: {
     port: PORT,
     strictPort: true,
+    // Absolute asset URLs, so chunks resolve when loaded from the host origin.
+    origin: `http://localhost:${PORT}`,
     // The host lives on another origin and must be able to fetch remoteEntry.js.
     cors: true,
   },
