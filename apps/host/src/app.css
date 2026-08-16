@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fa;
+  color: #1c2434;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.shell-header h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.shell-header p {
+  margin: 0 0 28px;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #62708a;
+}
+
+.shell-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .shell-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.shell-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #62708a;
+}
+
+.shell-label span {
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #97a2b6;
+}
+
+.remote-loading {
+  padding: 16px;
+  border: 1px dashed #c9d3e2;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #62708a;
+}
+
+.remote-error {
+  padding: 16px;
+  border: 1px solid #f0c2cc;
+  border-radius: 10px;
+  background: #fdf3f5;
+  font-size: 13px;
+  color: #8c2740;
+}
+
+.remote-error p {
+  margin: 6px 0 0;
+  font-size: 12px;
+}

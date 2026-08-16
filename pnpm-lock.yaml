@@ -15,6 +15,37 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
+  apps/host:
+    dependencies:
+      react:
+        specifier: ^19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: ^19.2.8
+        version: 19.2.8(react@19.2.8)
+    devDependencies:
+      '@rspack/cli':
+        specifier: ^2.1.10
+        version: 2.1.10(@rspack/core@2.1.10(@module-federation/runtime-tools@2.8.2))
+      '@rspack/core':
+        specifier: ^2.1.10
+        version: 2.1.10(@module-federation/runtime-tools@2.8.2)
+      '@rspack/plugin-react-refresh':
+        specifier: ^2.0.2
+        version: 2.0.2(@rspack/core@2.1.10(@module-federation/runtime-tools@2.8.2))(react-refresh@0.18.0)
+      '@types/react':
+        specifier: ^19.2.18
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: ^19.2.4
+        version: 19.2.4(@types/react@19.2.18)
+      react-refresh:
+        specifier: ^0.18.0
+        version: 0.18.0
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+
   apps/remote-rspack:
     dependencies:
       react:

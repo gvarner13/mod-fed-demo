@@ -1,0 +1,25 @@
+{
+  "name": "@mod-fed/host",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "rspack serve",
+    "build": "rspack build",
+    "preview": "rspack serve --mode production",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@rspack/cli": "^2.1.10",
+    "@rspack/core": "^2.1.10",
+    "@rspack/plugin-react-refresh": "^2.0.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "react-refresh": "^0.18.0",
+    "typescript": "^7.0.2"
+  }
+}
