@@ -1,0 +1,46 @@
+.catalog {
+  display: grid;
+  gap: 12px;
+}
+
+.catalog-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid #d8dee9;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.catalog-card h3 {
+  margin: 0 0 2px;
+  font-size: 15px;
+}
+
+.catalog-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #62708a;
+}
+
+.catalog-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.catalog-add {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #2f6feb;
+  cursor: pointer;
+}
+
+.catalog-add:hover {
+  background: #2559c4;
+}
