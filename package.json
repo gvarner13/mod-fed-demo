@@ -1,0 +1,19 @@
+{
+  "name": "mod-fed-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Module Federation demo: Turborepo monorepo with an Rspack host and Rspack + Vite remotes",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.3",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "preview": "turbo run preview",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.10.10",
+    "typescript": "^7.0.2"
+  }
+}
