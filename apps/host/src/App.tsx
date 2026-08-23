@@ -1,40 +1,33 @@
-import { lazy, useCallback, useState } from "react";
+import { lazy } from "react";
+import { useAtomValue } from "jotai";
+import { cartCountAtom, cartTotalAtom } from "@mod-fed/shared-state";
 import RemoteBoundary from "./RemoteBoundary";
-import type { Product } from "catalog/products";
-import type { CartItem } from "cart/Cart";
 
 // Both remotes are code-split: the host bundle contains only their URLs.
 const ProductList = lazy(() => import("catalog/ProductList"));
 const Cart = lazy(() => import("cart/Cart"));
 
+const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+
 export default function App() {
-  const [items, setItems] = useState<CartItem[]>([]);
-
-  const addToCart = useCallback((product: Product) => {
-    setItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item,
-        );
-      }
-      return [...prev, { id: product.id, name: product.name, price: product.price, qty: 1 }];
-    });
-  }, []);
-
-  const removeFromCart = useCallback((id: string) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  }, []);
-
-  const clearCart = useCallback(() => setItems([]), []);
+  // No props flow into either remote any more. The host reads the same atoms the
+  // remotes write, out of the store it provides in bootstrap.tsx.
+  const count = useAtomValue(cartCountAtom);
+  const total = useAtomValue(cartTotalAtom);
 
   return (
     <div className="shell">
       <header className="shell-header">
-        <h1>Federated Storefront</h1>
+        <div className="shell-title">
+          <h1>Federated Storefront</h1>
+          <span className="shell-badge">
+            {count === 0 ? "cart empty" : `${count} item${count === 1 ? "" : "s"} · ${currency.format(total)}`}
+          </span>
+        </div>
         <p>
           This shell is built with Rspack. The product list comes from an Rspack remote and the
-          cart from a Vite remote — both loaded at runtime over Module Federation.
+          cart from a Vite remote — both loaded at runtime over Module Federation, both reading
+          and writing this shell's Jotai store.
         </p>
       </header>
 
@@ -44,7 +37,7 @@ export default function App() {
             Catalog <span>rspack · :3001</span>
           </h2>
           <RemoteBoundary name="catalog">
-            <ProductList onAddToCart={addToCart} />
+            <ProductList />
           </RemoteBoundary>
         </section>
 
@@ -53,7 +46,7 @@ export default function App() {
             Cart <span>vite · :3002</span>
           </h2>
           <RemoteBoundary name="cart">
-            <Cart items={items} onRemove={removeFromCart} onClear={clearCart} />
+            <Cart />
           </RemoteBoundary>
         </aside>
       </div>

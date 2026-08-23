@@ -11,6 +11,8 @@
     "clean": "rm -rf dist .turbo node_modules/.vite"
   },
   "dependencies": {
+    "@mod-fed/shared-state": "workspace:*",
+    "jotai": "^2.20.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

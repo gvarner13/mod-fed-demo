@@ -9,35 +9,20 @@ declare module "catalog/products" {
   export function formatPrice(amount: number): string;
 }
 
+// Both remotes now take their state from the shared Jotai store rather than from
+// props, so their public surface is just "render me somewhere under the host's
+// Provider".
 declare module "catalog/ProductList" {
   import type { ComponentType } from "react";
-  import type { Product } from "catalog/products";
 
-  export type ProductListProps = {
-    onAddToCart?: (product: Product) => void;
-  };
-
-  const ProductList: ComponentType<ProductListProps>;
+  const ProductList: ComponentType;
   export default ProductList;
 }
 
 declare module "cart/Cart" {
   import type { ComponentType } from "react";
 
-  export type CartItem = {
-    id: string;
-    name: string;
-    price: number;
-    qty: number;
-  };
-
-  export type CartProps = {
-    items: CartItem[];
-    onRemove?: (id: string) => void;
-    onClear?: () => void;
-  };
-
-  const Cart: ComponentType<CartProps>;
+  const Cart: ComponentType;
   export default Cart;
 }
 

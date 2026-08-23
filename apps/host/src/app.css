@@ -15,9 +15,29 @@ body {
   padding: 40px 24px 64px;
 }
 
-.shell-header h1 {
+.shell-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0 0 6px;
+}
+
+.shell-header h1 {
+  margin: 0;
   font-size: 24px;
+}
+
+/* Rendered by the host from the same atoms the two remotes drive. */
+.shell-badge {
+  padding: 4px 10px;
+  border: 1px solid #c9d3e2;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #62708a;
+  white-space: nowrap;
 }
 
 .shell-header p {

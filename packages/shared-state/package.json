@@ -1,0 +1,23 @@
+{
+  "name": "@mod-fed/shared-state",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Jotai atoms shared across the host and both remotes over Module Federation",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo"
+  },
+  "peerDependencies": {
+    "jotai": "^2.20.0"
+  },
+  "devDependencies": {
+    "jotai": "^2.20.2",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,32 +1,26 @@
+import { useAtomValue, useSetAtom } from "jotai";
+import { cartItemsAtom, cartTotalAtom, clearCartAtom, removeFromCartAtom } from "@mod-fed/shared-state";
 import "./cart.css";
-
-export type CartItem = {
-  id: string;
-  name: string;
-  price: number;
-  qty: number;
-};
-
-export type CartProps = {
-  items: CartItem[];
-  onRemove?: (id: string) => void;
-  onClear?: () => void;
-};
 
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
 
-export default function Cart({ items, onRemove, onClear }: CartProps) {
-  const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+export default function Cart() {
+  // Reads and writes the same atoms the Rspack remote writes, through the store
+  // the host provides. Neither remote imports the other, or the host.
+  const items = useAtomValue(cartItemsAtom);
+  const total = useAtomValue(cartTotalAtom);
+  const removeFromCart = useSetAtom(removeFromCartAtom);
+  const clearCart = useSetAtom(clearCartAtom);
 
   return (
     <section className="cart">
       <div className="cart-header">
         <h3>Cart</h3>
         {items.length > 0 && (
-          <button className="cart-clear" onClick={() => onClear?.()}>
+          <button className="cart-clear" onClick={() => clearCart()}>
             clear
           </button>
         )}
@@ -45,7 +39,7 @@ export default function Cart({ items, onRemove, onClear }: CartProps) {
                 <button
                   className="cart-remove"
                   aria-label={`Remove ${item.name}`}
-                  onClick={() => onRemove?.(item.id)}
+                  onClick={() => removeFromCart(item.id)}
                 >
                   x
                 </button>

@@ -17,6 +17,12 @@ importers:
 
   apps/host:
     dependencies:
+      '@mod-fed/shared-state':
+        specifier: workspace:*
+        version: link:../../packages/shared-state
+      jotai:
+        specifier: ^2.20.2
+        version: 2.20.2(@types/react@19.2.18)(react@19.2.8)
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -51,6 +57,12 @@ importers:
 
   apps/remote-rspack:
     dependencies:
+      '@mod-fed/shared-state':
+        specifier: workspace:*
+        version: link:../../packages/shared-state
+      jotai:
+        specifier: ^2.20.2
+        version: 2.20.2(@types/react@19.2.18)(react@19.2.8)
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -85,6 +97,12 @@ importers:
 
   apps/remote-vite:
     dependencies:
+      '@mod-fed/shared-state':
+        specifier: workspace:*
+        version: link:../../packages/shared-state
+      jotai:
+        specifier: ^2.20.2
+        version: 2.20.2(@types/react@19.2.18)(react@19.2.8)
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -110,6 +128,15 @@ importers:
       vite:
         specifier: ^8.2.1
         version: 8.2.1
+
+  packages/shared-state:
+    devDependencies:
+      jotai:
+        specifier: ^2.20.2
+        version: 2.20.2(@types/react@19.2.18)(react@19.2.8)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
 
 packages:
 
@@ -596,6 +623,24 @@ packages:
     resolution: {integrity: sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw==}
     peerDependencies:
       ws: '*'
+
+  jotai@2.20.2:
+    resolution: {integrity: sha512-aHB4CNb9qRcyf0mwSB6EO5bCGAjx8cTwFgOFCE2leOnTzqACbnSWG8XoWB3LxCT1Qoj03I1OWAHszDmN4uHb/w==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@babel/core': '>=7.0.0'
+      '@babel/template': '>=7.0.0'
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   lightningcss-android-arm64@1.33.0:
     resolution: {integrity: sha512-gEpRTalKdosp4Bb8qWtc2iOgE5SeIHlpS1up9bFq2wAyYhl1UdTObYiHe98zEM9SQvSoqQZ1IQD0JNpg3Ml5pg==}
@@ -1121,6 +1166,11 @@ snapshots:
   isomorphic-ws@5.0.0(ws@8.21.0):
     dependencies:
       ws: 8.21.0
+
+  jotai@2.20.2(@types/react@19.2.18)(react@19.2.8):
+    optionalDependencies:
+      '@types/react': 19.2.18
+      react: 19.2.8
 
   lightningcss-android-arm64@1.33.0:
     optional: true
