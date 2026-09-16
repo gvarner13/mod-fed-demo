@@ -1,5 +1,7 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartItemsAtom, cartTotalAtom, clearCartAtom, removeFromCartAtom } from "@mod-fed/shared-state";
+import { Badge, Button, Card } from "@mod-fed/ui";
+import "@mod-fed/ui/styles.css";
 import "./cart.css";
 
 const currency = new Intl.NumberFormat("en-US", {
@@ -16,13 +18,13 @@ export default function Cart() {
   const clearCart = useSetAtom(clearCartAtom);
 
   return (
-    <section className="cart">
+    <Card render={<section />} className="cart" aria-label="Shopping cart">
       <div className="cart-header">
         <h3>Cart</h3>
         {items.length > 0 && (
-          <button className="cart-clear" onClick={() => clearCart()}>
+          <Button variant="secondary" onClick={() => clearCart()}>
             clear
-          </button>
+          </Button>
         )}
       </div>
 
@@ -34,15 +36,15 @@ export default function Cart() {
             {items.map((item) => (
               <li key={item.id} className="cart-item">
                 <span className="cart-item-name">{item.name}</span>
-                <span className="cart-qty">x{item.qty}</span>
+                <Badge className="cart-qty">x{item.qty}</Badge>
                 <span>{currency.format(item.price * item.qty)}</span>
-                <button
-                  className="cart-remove"
+                <Button
+                  variant="danger"
                   aria-label={`Remove ${item.name}`}
                   onClick={() => removeFromCart(item.id)}
                 >
                   x
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -52,6 +54,6 @@ export default function Cart() {
           </div>
         </>
       )}
-    </section>
+    </Card>
   );
 }

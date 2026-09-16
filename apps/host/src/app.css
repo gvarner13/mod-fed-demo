@@ -1,57 +1,38 @@
-:root {
-  color-scheme: light;
-}
-
-body {
-  margin: 0;
-  background: #f5f7fa;
-  color: #1c2434;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
 .shell {
-  max-width: 1000px;
+  max-width: 1048px;
   margin: 0 auto;
-  padding: 40px 24px 64px;
+  padding: var(--ui-space-10) var(--ui-space-6) 64px;
 }
 
 .shell-title {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
-  margin: 0 0 6px;
+  gap: var(--ui-space-3);
+  margin: 0 0 var(--ui-space-2);
 }
 
 .shell-header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: var(--ui-text-heading);
 }
 
 /* Rendered by the host from the same atoms the two remotes drive. */
 .shell-badge {
-  padding: 4px 10px;
-  border: 1px solid #c9d3e2;
-  border-radius: 999px;
-  background: #fff;
-  font-size: 12px;
-  font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: #62708a;
-  white-space: nowrap;
 }
 
 .shell-header p {
-  margin: 0 0 28px;
+  margin: 0 0 var(--ui-space-7);
   max-width: 62ch;
-  font-size: 14px;
-  line-height: 1.55;
-  color: #62708a;
+  font-size: var(--ui-text-body);
+  color: var(--ui-muted);
 }
 
 .shell-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 28px;
+  gap: var(--ui-space-7);
   align-items: start;
 }
 
@@ -64,40 +45,39 @@ body {
 .shell-label {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  margin: 0 0 12px;
-  font-size: 12px;
+  gap: var(--ui-space-2);
+  margin: 0 0 var(--ui-space-3);
+  font-size: var(--ui-text-label);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #62708a;
+  color: var(--ui-muted);
 }
 
 .shell-label span {
   font-weight: 500;
   letter-spacing: 0;
   text-transform: none;
-  color: #97a2b6;
 }
 
 .remote-loading {
-  padding: 16px;
-  border: 1px dashed #c9d3e2;
-  border-radius: 10px;
-  font-size: 13px;
-  color: #62708a;
+  padding: var(--ui-space-4);
+  border: 1px dashed var(--ui-border);
+  border-radius: var(--ui-radius-card);
+  font-size: var(--ui-text-control);
+  color: var(--ui-muted);
 }
 
 .remote-error {
-  padding: 16px;
-  border: 1px solid #f0c2cc;
-  border-radius: 10px;
-  background: #fdf3f5;
-  font-size: 13px;
-  color: #8c2740;
+  padding: var(--ui-space-4);
+  border: 1px solid var(--ui-danger-text);
+  border-radius: var(--ui-radius-card);
+  background: var(--ui-danger-soft);
+  font-size: var(--ui-text-control);
+  color: var(--ui-danger-text);
 }
 
 .remote-error p {
-  margin: 6px 0 0;
-  font-size: 12px;
+  margin: var(--ui-space-2) 0 0;
+  font-size: var(--ui-text-label);
 }

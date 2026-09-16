@@ -1,6 +1,8 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { addToCartAtom, cartQuantitiesAtom } from "@mod-fed/shared-state";
+import { Badge, Button, Card } from "@mod-fed/ui";
 import { products, formatPrice } from "./products";
+import "@mod-fed/ui/styles.css";
 import "./styles.css";
 
 export default function ProductList() {
@@ -15,19 +17,19 @@ export default function ProductList() {
         const qty = quantities[product.id] ?? 0;
 
         return (
-          <article key={product.id} className="catalog-card">
+          <Card render={<article />} key={product.id} className="catalog-card">
             <div>
               <h3>{product.name}</h3>
               <p>{product.blurb}</p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              {qty > 0 && <span className="catalog-in-cart">{qty} in cart</span>}
+            <div className="catalog-actions">
+              {qty > 0 && <Badge variant="accent">{qty} in cart</Badge>}
               <span className="catalog-price">{formatPrice(product.price)}</span>
-              <button className="catalog-add" onClick={() => addToCart(product)}>
+              <Button onClick={() => addToCart(product)}>
                 Add
-              </button>
+              </Button>
             </div>
-          </article>
+          </Card>
         );
       })}
     </div>

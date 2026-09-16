@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { useAtomValue } from "jotai";
 import { cartCountAtom, cartTotalAtom } from "@mod-fed/shared-state";
+import { Badge } from "@mod-fed/ui";
 import RemoteBoundary from "./RemoteBoundary";
 
 // Both remotes are code-split: the host bundle contains only their URLs.
@@ -20,9 +21,9 @@ export default function App() {
       <header className="shell-header">
         <div className="shell-title">
           <h1>Federated Storefront</h1>
-          <span className="shell-badge">
+          <Badge className="shell-badge" aria-live="polite">
             {count === 0 ? "cart empty" : `${count} item${count === 1 ? "" : "s"} · ${currency.format(total)}`}
-          </span>
+          </Badge>
         </div>
         <p>
           This shell is built with Rspack. The product list comes from an Rspack remote and the

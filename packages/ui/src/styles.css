@@ -1,0 +1,115 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme) prefix(ui);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(ui) source(none);
+
+/* Scan only the library: consumers need neither Tailwind nor a source scanner. */
+@source "./Button.tsx";
+@source "./Badge.tsx";
+@source "./Card.tsx";
+
+@theme inline {
+  --color-canvas: var(--ui-canvas);
+  --color-surface: var(--ui-surface);
+  --color-surface-muted: var(--ui-surface-muted);
+  --color-text: var(--ui-text);
+  --color-muted: var(--ui-muted);
+  --color-border: var(--ui-border);
+  --color-accent: var(--ui-accent);
+  --color-accent-hover: var(--ui-accent-hover);
+  --color-on-accent: var(--ui-on-accent);
+  --color-accent-soft: var(--ui-accent-soft);
+  --color-accent-text: var(--ui-accent-text);
+  --color-danger: var(--ui-danger);
+  --color-danger-hover: var(--ui-danger-hover);
+  --color-on-danger: var(--ui-on-danger);
+  --color-danger-soft: var(--ui-danger-soft);
+  --color-danger-text: var(--ui-danger-text);
+  --color-focus: var(--ui-focus);
+  --font-body: var(--ui-font-body);
+  --text-control: var(--ui-text-control);
+  --text-label: var(--ui-text-label);
+  --spacing-control-x: var(--ui-space-3);
+  --spacing-control-y: var(--ui-space-2);
+  --spacing-badge-x: var(--ui-space-2);
+  --spacing-badge-y: var(--ui-space-1);
+  --spacing-panel: var(--ui-space-4);
+  --radius-control: var(--ui-radius-control);
+  --radius-card: var(--ui-radius-card);
+  --radius-pill: var(--ui-radius-pill);
+  --shadow-card: var(--ui-elevation-card);
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --ui-canvas: #f5f7fa;
+    --ui-surface: #ffffff;
+    --ui-surface-muted: #e7ecf3;
+    --ui-text: #1c2434;
+    --ui-muted: #52617a;
+    --ui-border: #c9d3e2;
+    --ui-accent: #2559c4;
+    --ui-accent-hover: #1e469d;
+    --ui-on-accent: #ffffff;
+    --ui-accent-soft: #e8f0fe;
+    --ui-accent-text: #204eae;
+    --ui-danger: #b42340;
+    --ui-danger-hover: #901c33;
+    --ui-on-danger: #ffffff;
+    --ui-danger-soft: #fdf0f3;
+    --ui-danger-text: #8c2740;
+    --ui-focus: #2559c4;
+    --ui-font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ui-text-label: 0.75rem;
+    --ui-text-control: 0.8125rem;
+    --ui-text-body: 0.875rem;
+    --ui-text-heading: 1.5rem;
+    --ui-space-1: 0.25rem;
+    --ui-space-2: 0.5rem;
+    --ui-space-3: 0.75rem;
+    --ui-space-4: 1rem;
+    --ui-space-6: 1.5rem;
+    --ui-space-7: 1.75rem;
+    --ui-space-10: 2.5rem;
+    --ui-radius-control: 0.5rem;
+    --ui-radius-card: 0.625rem;
+    --ui-radius-pill: 999px;
+    --ui-elevation-card: 0 1px 3px rgb(28 36 52 / 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ui-canvas: #0f172a;
+      --ui-surface: #1e293b;
+      --ui-surface-muted: #334155;
+      --ui-text: #f1f5f9;
+      --ui-muted: #b8c5d6;
+      --ui-border: #475569;
+      --ui-accent: #93c5fd;
+      --ui-accent-hover: #bfdbfe;
+      --ui-on-accent: #0f172a;
+      --ui-accent-soft: #1e3a5f;
+      --ui-accent-text: #bfdbfe;
+      --ui-danger: #fda4af;
+      --ui-danger-hover: #fecdd3;
+      --ui-on-danger: #4c0519;
+      --ui-danger-soft: #4c1d2d;
+      --ui-danger-text: #fecdd3;
+      --ui-focus: #93c5fd;
+      --ui-elevation-card: 0 1px 3px rgb(0 0 0 / 0.3);
+    }
+  }
+
+  /* A small baseline, not Tailwind's global heading/list/button reset. */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--ui-canvas);
+    color: var(--ui-text);
+    font-family: var(--ui-font-body);
+    line-height: 1.5;
+  }
+}
