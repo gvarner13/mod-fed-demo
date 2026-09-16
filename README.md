@@ -13,6 +13,7 @@ with a single [Jotai](https://jotai.org/docs/core/atom) store shared across all 
 | Package                  | Role                                                      |
 | ------------------------ | --------------------------------------------------------- |
 | `packages/shared-state`  | The Jotai atoms, shared as a federation singleton by all three |
+| `packages/ui`            | Source UI primitives and compiled baseline CSS, bundled normally by each app |
 
 Each remote also boots standalone on its own port, so it can be developed in isolation.
 
@@ -37,7 +38,39 @@ Other tasks:
 pnpm build        # production build of all three apps
 pnpm preview      # serve the built output on the same ports
 pnpm typecheck    # tsc --noEmit across the workspace
+pnpm test         # shared UI behavior tests
 ```
+
+## Shared UI and baseline theme
+
+Following [ADR-0001](docs/adr/0001-workspace-ui-wrappers-and-host-theme.md), every
+app bundles `@mod-fed/ui` normally — it is **not** exposed or shared through Module
+Federation. React and the existing state layer remain federation singletons.
+
+```tsx
+import { Badge, Button, Card } from "@mod-fed/ui";
+import "@mod-fed/ui/styles.css";
+
+<Card render={<article />}>
+  <Badge variant="accent">Available</Badge>
+  <Button onClick={addToCart}>Add</Button>
+</Card>
+```
+
+The package exports TypeScript source and a compiled Tailwind stylesheet. It owns
+`--ui-*` semantic tokens, system-selected light/dark modes, and a small global body
+baseline (not Tailwind Preflight). Apps retain layout CSS but use these tokens rather
+than hard-coded colors. Remotes import the baseline from their exposed components,
+so both standalone and federated rendering carry the same styles. There is no theme
+provider, manual mode toggle, or remote-specific theme override.
+
+`pnpm dev` builds the stylesheet before starting apps and runs its watcher;
+`pnpm build` orders the library build before all consumers. When running a single
+app directly, run `pnpm --filter @mod-fed/ui build` first (or keep
+`pnpm --filter @mod-fed/ui dev` running for style changes).
+
+See [the UI package guide](packages/ui/README.md) for the component contract and
+verification steps.
 
 ## Sharing state
 

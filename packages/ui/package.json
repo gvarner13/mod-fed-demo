@@ -1,0 +1,39 @@
+{
+  "name": "@mod-fed/ui",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Workspace UI primitives and compiled baseline theme (not federated)",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "dev": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "@base-ui-components/react": "1.0.0-rc.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "jsdom": "^28.1.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "4.3.3",
+    "typescript": "^7.0.2",
+    "vitest": "^4.0.0"
+  }
+}

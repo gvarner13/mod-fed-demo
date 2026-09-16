@@ -1,28 +1,32 @@
 .catalog {
   display: grid;
-  gap: 12px;
+  gap: var(--ui-space-3);
 }
 
 .catalog-card {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px 16px;
-  border: 1px solid #d8dee9;
-  border-radius: 10px;
-  background: #fff;
+  gap: var(--ui-space-4);
 }
 
 .catalog-card h3 {
-  margin: 0 0 2px;
-  font-size: 15px;
+  margin: 0 0 var(--ui-space-1);
+  font-size: var(--ui-text-body);
 }
 
 .catalog-card p {
   margin: 0;
-  font-size: 13px;
-  color: #62708a;
+  font-size: var(--ui-text-control);
+  color: var(--ui-muted);
+}
+
+.catalog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-space-3);
 }
 
 .catalog-price {
@@ -30,28 +34,17 @@
   font-weight: 600;
 }
 
-.catalog-add {
-  border: 0;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  background: #2f6feb;
-  cursor: pointer;
+.catalog-standalone {
+  max-width: 768px;
+  margin: var(--ui-space-10) auto;
+  padding: 0 var(--ui-space-6);
 }
 
-.catalog-add:hover {
-  background: #2559c4;
+.catalog-standalone h1 {
+  font-size: var(--ui-text-heading);
 }
 
-/* Driven by the shared cart state, so removals in the Vite remote show up here. */
-.catalog-in-cart {
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: #e8f0fe;
-  font-size: 12px;
-  font-weight: 600;
-  color: #2559c4;
-  white-space: nowrap;
+.catalog-intro {
+  color: var(--ui-muted);
+  font-size: var(--ui-text-body);
 }

@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider, createStore } from "jotai";
 import App from "./App";
+import "@mod-fed/ui/styles.css";
 import "./app.css";
 
 const container = document.getElementById("root");

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mod-fed/shared-state": "workspace:*",
+    "@mod-fed/ui": "workspace:*",
     "jotai": "^2.20.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
